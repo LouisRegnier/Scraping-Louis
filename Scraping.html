@@ -1,0 +1,16 @@
+<head>
+  <title>Scraping</title>
+</head>
+
+<body>
+	<div class="container">
+	  <h1 style="text-align:center;">API pour Kepasa</h1>
+	{{> resultatsFoot}}
+	</div>
+ 
+</body>
+
+<template name = "resultatsFoot">
+	<h2>Matchs de Foot en direct</h2>
+	{{>reactiveTable collection=resultatsFoot}}
+</template>
