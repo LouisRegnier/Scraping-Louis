@@ -6,6 +6,8 @@
 	<div class="container">
 	  <h1 style="text-align:center;">API pour Kepasa</h1>
 	{{> resultatsFoot}}
+	{{> velibs}}
+	{{> theatresParis}}
 	</div>
  
 </body>
@@ -13,4 +15,14 @@
 <template name = "resultatsFoot">
 	<h2>Matchs de Foot en direct</h2>
 	{{>reactiveTable collection=resultatsFoot}}
+</template>
+
+<template name = "velibs">
+	<h2>Velibs</h2>
+	{{>reactiveTable collection=velibs}}
+</template>
+
+<template name = "theatresParis">
+	<h2>Théatres Paris</h2>
+	{{>reactiveTable collection = theatresParis}}
 </template>
