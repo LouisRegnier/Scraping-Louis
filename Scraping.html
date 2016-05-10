@@ -9,6 +9,7 @@
 	{{> velibs}}
 	{{> theatresParis}}
 	{{> spectaclesParis}}
+	{{> exposParis}}
 	</div>
  
 </body>
@@ -31,4 +32,9 @@
 <template name = "spectaclesParis">
 	<h2>Spectacles Paris</h2>
 	{{>reactiveTable collection = spectaclesParis}}
+</template>
+
+<template name = "exposParis">
+	<h2>Expositions Paris</h2>
+	{{>reactiveTable collection = exposParis}}
 </template>
