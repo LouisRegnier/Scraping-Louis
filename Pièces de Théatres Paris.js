@@ -32,7 +32,7 @@ if (Meteor.isServer) {
         result1 = Meteor.http.get("https://www.parisbouge.com/search?type=event&category=theatre&date_start="+annee+"-"+mois+"-"+jour+"&date_end="+annee+"-"+mois+"-"+jour+"&page=1");
         $ = cheerio.load(result1.content);
         var nombrePages = $('#pb-main > div > div.col-xs-12.col-md-8.col-lg-8 > nav > ul.pagination.hidden-xs > li:nth-child(6) > a').text();
-        console.log (nombrePages);
+
         TheatresParis.remove({});
 
         for (var i = 1; i<= nombrePages; i++) {
@@ -55,7 +55,7 @@ if (Meteor.isServer) {
               lieu[j] = $(this).text();
             });
             $('div > div > ul > li:nth-child(2) > span').each(function(j, elem) {
-              genre[j] = $(this).text();
+              genre [j] = $(this).text();
             });
             $('div > figure > a > img').each(function(j, elem) {
               image[j] = $(this).attr('src'); 

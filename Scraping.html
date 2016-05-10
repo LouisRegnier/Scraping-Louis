@@ -8,6 +8,7 @@
 	{{> resultatsFoot}}
 	{{> velibs}}
 	{{> theatresParis}}
+	{{> spectaclesParis}}
 	</div>
  
 </body>
@@ -25,4 +26,9 @@
 <template name = "theatresParis">
 	<h2>Théatres Paris</h2>
 	{{>reactiveTable collection = theatresParis}}
+</template>
+
+<template name = "spectaclesParis">
+	<h2>Spectacles Paris</h2>
+	{{>reactiveTable collection = spectaclesParis}}
 </template>
