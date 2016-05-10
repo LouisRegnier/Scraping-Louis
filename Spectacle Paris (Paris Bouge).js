@@ -46,7 +46,7 @@ if (Meteor.isServer) {
   
 
           $('div > div > h4 > a').each(function(j, elem) {
-            nomSpectacle[j] = $(this).text();
+            nomSpectacle[j] = $(this).text().toUpperCase();
             $('div > div > ul > li.hidden-xs-').each(function(j, elem) {
               dates[j] = $(this).text();
             });
