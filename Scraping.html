@@ -10,6 +10,9 @@
 	{{> theatresParis}}
 	{{> spectaclesParis}}
 	{{> exposParis}}
+	{{> festivalsParis}}
+	{{> exposLille}}
+	{{> concertParis}}
 	</div>
  
 </body>
@@ -37,4 +40,19 @@
 <template name = "exposParis">
 	<h2>Expositions Paris</h2>
 	{{>reactiveTable collection = exposParis}}
+</template>
+
+<template name = "festivalsParis">
+	<h2>Festivals Paris</h2>
+	{{>reactiveTable collection = festivalsParis}}
+</template>
+
+<template name = "exposLille">
+	<h2>Expositions Lille</h2>
+	{{>reactiveTable collection = exposLille}}
+</template>
+
+<template name = "concertParis">
+	<h2>Concert Paris Bouge</h2>
+	{{>reactiveTable collection = concertParis}}
 </template>

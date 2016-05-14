@@ -31,7 +31,22 @@ if (Meteor.isServer) {
 
         result1 = Meteor.http.get("https://www.parisbouge.com/search?type=event&category=spectacle&date_start="+annee+"-"+mois+"-"+jour+"&date_end="+annee+"-"+mois+"-"+jour+"&page=1");
         $ = cheerio.load(result1.content);
-        var nombrePages = $('#pb-main > div > div.col-xs-12.col-md-8.col-lg-8 > nav > ul.pagination.hidden-xs > li:nth-child(6) > a').text();
+
+        //Détermination du nombre de pages
+          var nombreCarrés = $('#pb-main > div > div.col-xs-12.col-md-8.col-lg-8 > nav > ul.pagination.hidden-xs').children().length;
+        var nombrePages;
+        if (nombreCarrés === 4) {
+          nombrePages = 2;
+        } else if (nombreCarrés === 5) {
+          nombrePages = 3;
+        } else if (nombreCarrés === 6) {
+          nombrePages = 4;
+        } else if (nombreCarrés === 0) {
+          nombrePages = 1;
+        } else {
+          nombrePages = $('#pb-main > div > div.col-xs-12.col-md-8.col-lg-8 > nav > ul.pagination.hidden-xs > li:nth-child(6) > a').text();
+        }
+
         SpectaclesParis.remove({});
 
         for (var i = 1; i<= nombrePages; i++) {
