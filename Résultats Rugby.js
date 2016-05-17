@@ -1,18 +1,18 @@
-ResultatsFoot = new Mongo.Collection('resultatsFoot');
+ResultatsRugby = new Mongo.Collection('resultatsRugby');
 
 
 if (Meteor.isClient) {
 
-  Meteor.call('getFoot', function (error, result) {
+  Meteor.call('getRugby', function (error, result) {
     if (error) {
       console.log("error", error);
     };
   });
 
 
-  Template.resultatsFoot.helpers({
-    resultatsFoot : function () {
-      return ResultatsFoot.find().fetch();
+  Template.resultatsRugby.helpers({
+    resultatsRugby : function () {
+      return ResultatsRugby.find().fetch();
     }
   });
 
@@ -23,15 +23,11 @@ if (Meteor.isServer) {
     var cheerio = Meteor.npmRequire('cheerio');
 
     Meteor.methods({    
-      getFoot: function () {
+      getRugby: function () {
        
-        result = Meteor.http.get("http://www.lequipe.fr/Football/Directs  ");
+        result = Meteor.http.get("http://www.lequipe.fr/Rugby/Directs  ");
         $ = cheerio.load(result.content);
 
-
-        // var nomChampionnat = [];
-        // var drapeauChampionnat = [];
-        // var numeroJournee = [];
         var logoClub1 = [];
         var logoClub2 = [];
         var nomClub1 = [];
@@ -40,16 +36,8 @@ if (Meteor.isServer) {
         var scoreClub2 = [];
         var temps = [];
 
-        ResultatsFoot.remove({});
+        ResultatsRugby.remove({});
 
-          // $('div.event__logo > img').each(function(i, elem) {
-          //   drapeauChampionnat[i] = $(this).Image();
-          // });
-          // $('span').each(function(i, elem) {
-          //     nomChampionnat[i] = $(this).text();
-          //     $('a').each(function(i, elem) {
-          //       numeroJournee[i] = $(this).text();
-          //     });
 
               $('div:nth-child(2) > div.concurr.ek1 > div.nom').each(function(i, elem) {
                 nomClub1[i] = $(this).text();
@@ -73,8 +61,7 @@ if (Meteor.isServer) {
                 });
 
           var row = {};
-          //row["Drapeau Championnat"] = greve [i];
-          //row["numeroJournee"] = numeroJournee [i];
+
           row["nomClub1"] = nomClub1 [i];
           row["nomClub2"] = nomClub2 [i];
           row["logoClub1"] = logoClub1 [i];
@@ -82,7 +69,7 @@ if (Meteor.isServer) {
           row["scoreClub1"] = scoreClub1 [i];
           row["scoreClub2"] = scoreClub2 [i];
           row["temps"] = temps [i];
-          ResultatsFoot.insert(row);
+          ResultatsRugby.insert(row);
             });
 
         return nomClub1;

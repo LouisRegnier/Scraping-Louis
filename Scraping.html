@@ -13,6 +13,7 @@
 	{{> festivalsParis}}
 	{{> exposLille}}
 	{{> concertParis}}
+	{{> resultatsRugby}}
 	</div>
  
 </body>
@@ -55,4 +56,9 @@
 <template name = "concertParis">
 	<h2>Concert Paris Bouge</h2>
 	{{>reactiveTable collection = concertParis}}
+</template>
+
+<template name = "resultatsRugby">
+	<h2>Directs Rugby</h2>
+	{{>reactiveTable collection = resultatsRugby}}
 </template>
